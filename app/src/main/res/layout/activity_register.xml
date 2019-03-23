@@ -21,7 +21,7 @@
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/secondaryDarkColor"/>
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -136,5 +136,5 @@
         android:textAlignment="center"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/secondaryDarkColor" />
 </LinearLayout>

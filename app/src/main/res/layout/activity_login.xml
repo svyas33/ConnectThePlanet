@@ -32,7 +32,7 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/primaryDarkColor"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                 android:textAlignment="textEnd"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/primaryDarkColor"
                 />
 
             <Button
@@ -99,7 +99,7 @@
                 android:textAlignment="center"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/primaryDarkColor"
                 />
 
         </LinearLayout>
