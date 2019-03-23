@@ -9,8 +9,7 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    tools:context=".LoginActivity"
-    android:background="#1F000000">
+    tools:context=".LoginActivity">
 
     <ScrollView
         android:id="@+id/login_form"
