@@ -139,8 +139,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Register"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="@color/secondaryDarkColor"
+        android:textColor="#FFFFFF"/>
     <TextView
         android:id="@+id/already_have_account"
         android:layout_width="match_parent"

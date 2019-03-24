@@ -104,14 +104,14 @@ public class RegisterActivity extends AppCompatActivity {
                             //Log.d(TAG, "createUserWithEmail:success");
 
                             String userId = mAuth.getCurrentUser().getUid();
-                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("User").child(radioButton.getText().toString()).child(userId);
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("User").child(userId);
                             Map<String, Object> userInfo = new HashMap<>();
                             userInfo.put("name", name);
                             userInfo.put("status", status);
                             userInfo.put("bio", bio);
                             userInfo.put("company", company);
                             userInfo.put("profileImageUrl", "default");
-                            currentUserDb.updateChildren(userInfo);;
+                            currentUserDb.updateChildren(userInfo);
                             //updateUI(user);
                             sendUserToMainActivity();
                         } else {
