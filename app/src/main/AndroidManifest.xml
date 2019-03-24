@@ -14,7 +14,7 @@
         <activity android:name=".CreateProjectActivity"></activity>
         android:theme="@style/AppTheme">
         <activity android:name=".ViewProjectsActivity"></activity>
-        <activity android:name=".CreateProjectActivity" />
+        <activity android:name=".MyProfile" />
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"

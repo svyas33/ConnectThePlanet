@@ -3,6 +3,8 @@ package com.example.android.connecttheplanet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import javax.annotation.Nullable;
+
 public class ViewProjectsActivity extends AppCompatActivity {
 
     @Override

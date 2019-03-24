@@ -14,7 +14,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/create_addImageButton"

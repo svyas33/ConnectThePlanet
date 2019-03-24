@@ -29,8 +29,7 @@ public class MyProfile extends AppCompatActivity {
     EditText displayName, displayCompany, displayBio;
     Button signOutButton, confirmButton;
     String userID, name, company, bio;
-    DatabaseReference mCustomerDatabase, userSpot;
-    Uri resultUri;
+    DatabaseReference mCustomerDatabase;
     private FirebaseAuth mAuth;
 
     public MyProfile() {
@@ -72,7 +71,7 @@ public class MyProfile extends AppCompatActivity {
     }
 
     private void getUserInfo() {
-        userSpot.addListenerForSingleValueEvent(new ValueEventListener() {
+        mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map userInfo = ( Map<String, Object>) dataSnapshot.getValue();
@@ -109,7 +108,7 @@ public class MyProfile extends AppCompatActivity {
         userInfo.put("name", name);
         userInfo.put("bio", bio);
         userInfo.put("company", company);
-        userSpot.updateChildren(userInfo);
+        mCustomerDatabase.updateChildren(userInfo);
     }
 
     public void signOut(View view){
