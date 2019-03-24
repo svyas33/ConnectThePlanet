@@ -9,7 +9,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
-
-
+        ((TextView)findViewById(R.id.textView3)).setText(Html.fromHtml("Welcome!\nDear Reader,\nWelcome to our website. Here at Connect The Planet our goal is to connect people willing to help and initiate change in their communities. Our goal is to connect people with ideas to those willing to help make these ideas a reality. \n Do you have a way to better your community? Are you itching to help out and volunteer for community projects? Is your company interested in sponsoring community service project? If so, we are here to help! \nPlease take time to read through our website to get more familiarized with our goals and how you can help make an impact! \nBest, \nThe Connect The Planet Team"));
         Toolbar toolbar = findViewById(R.id.toolbarinmain);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
