@@ -9,6 +9,16 @@
     android:fitsSystemWindows="true">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_view" />
+
     <RelativeLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
@@ -44,8 +54,15 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:src="@drawable/header" />
+
+            <TextView
+                android:id="@+id/main_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:padding="16dp"/>
 
             <Button
                 android:id="@+id/button"
@@ -56,15 +73,6 @@
                 android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         </LinearLayout>
-
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:menu="@menu/drawer_view"
-            app:headerLayout="@layout/nav_header"/>
 
     </RelativeLayout>
 
