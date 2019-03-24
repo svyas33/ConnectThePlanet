@@ -48,7 +48,6 @@ public class CreateProjectActivity extends AppCompatActivity {
 
         final DatabaseReference currentProjectDb = FirebaseDatabase.getInstance().getReference().child("Project");
 
-
         create = (Button)findViewById(R.id.create_applyButton);
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -61,25 +60,29 @@ public class CreateProjectActivity extends AppCompatActivity {
                 numOfVolunteers = Integer.parseInt(((EditText) findViewById(R.id.create_numVolunteersTextView)).getText().toString());
                 costOfProject = Integer.parseInt(((EditText) findViewById(R.id.create_moneyNeededTextView)).getText().toString());
 
+                DatabaseReference childrenRef = currentProjectDb.child(projName);
+
                 Map<String, Object> projectInfo = new HashMap<>();
                 projectInfo.put("name", projName);
                 projectInfo.put("details", projDetails);
                 projectInfo.put("numVolunteers", numOfVolunteers);
                 projectInfo.put("cost", costOfProject);
                 projectInfo.put("email", orgEmail);
-                currentProjectDb.updateChildren(projectInfo);
+                childrenRef.updateChildren(projectInfo);
 
-                final DatabaseReference projectDb = FirebaseDatabase.getInstance().getReference().child("Project");
-
-                projectDb.addValueEventListener(new ValueEventListener() {
+                currentProjectDb.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot)
                     {
                         for(DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
 
                             name = (String) childSnapShot.child("name").getValue();
-                            numVolunteers = (String) childSnapShot.child("numVolunteers").getValue();
-                            cost = (String) childSnapShot.child("cost").getValue();
+                            numVolunteers = (String) String.valueOf(childSnapShot.child("numVolunteers").getValue());
+                            cost = (String) String.valueOf(childSnapShot.child("cost").getValue());
+                            Map<String, String> datum = new HashMap<String, String>(2);
+                            datum.put("title", name);
+                            datum.put("subtitle", (numVolunteers + " volunteers & $" + cost + " needed"));
+                            data.add(datum);
                         }
                     }
 
@@ -90,10 +93,7 @@ public class CreateProjectActivity extends AppCompatActivity {
                 });
 
 
-                Map<String, String> datum = new HashMap<String, String>(2);
-                datum.put("title", name);
-                datum.put("subtitle", (numVolunteers + " volunteers & $" + cost + " needed"));
-                data.add(datum);
+
 
                 activity.finish();
             }
