@@ -1,9 +1,11 @@
 package com.example.android.connecttheplanet;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DrawerLayout drawerLayout;
+    private Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_foreground);
         mAuth = FirebaseAuth.getInstance();
+        activity = this;
         drawerLayout = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -41,6 +45,20 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
                         drawerLayout.closeDrawers();
+                        Intent intent;
+                        switch (menuItem.getItemId()){
+                            case R.id.nav_projects_create:intent = new Intent(activity, CreateProjectActivity.class);
+                                startActivity(intent);
+                                break;
+                            case R.id.nav_projects_view:intent = new Intent(activity, CreateProjectActivity.class);
+                                startActivity(intent);
+                                break;
+                            case R.id.nav_user_profile:intent = new Intent(activity, MyProfile.class);
+                                startActivity(intent);
+                                break;
+                        }
+
+
 
                         return true;
                     }
@@ -67,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getApplicationContext());
         userNull();
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void updateUI(FirebaseUser currentUser) {
