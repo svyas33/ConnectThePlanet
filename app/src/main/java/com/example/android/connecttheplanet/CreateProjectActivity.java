@@ -69,7 +69,7 @@ public class CreateProjectActivity extends AppCompatActivity {
                 projectInfo.put("cost", costOfProject);
                 projectInfo.put("email", orgEmail);
                 childrenRef.updateChildren(projectInfo);
-                projectList.put(projName,projectInfo);
+
 
                 currentProjectDb.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -80,9 +80,18 @@ public class CreateProjectActivity extends AppCompatActivity {
                             name = (String) childSnapShot.child("name").getValue();
                             numVolunteers = (String) String.valueOf(childSnapShot.child("numVolunteers").getValue());
                             cost = (String) String.valueOf(childSnapShot.child("cost").getValue());
+                            projDetails = (String)childSnapShot.child("details").getValue();
+                            orgEmail = (String)childSnapShot.child("email").getValue();
                             Map<String, String> datum = new HashMap<String, String>(2);
                             datum.put("title", name);
                             datum.put("subtitle", (numVolunteers + " volunteers & $" + cost + " needed"));
+                            Map<String, Object> projectInfo2 = new HashMap<>();
+                            projectInfo2.put("name", name);
+                            projectInfo2.put("details", projDetails);
+                            projectInfo2.put("numVolunteers", numOfVolunteers);
+                            projectInfo2.put("cost", cost);
+                            projectInfo2.put("email", orgEmail);
+                            projectList.put(name,projectInfo2);
                             data.add(datum);
                         }
                     }
