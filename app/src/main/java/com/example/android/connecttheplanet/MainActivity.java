@@ -1,7 +1,6 @@
 package com.example.android.connecttheplanet;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.nav_projects_create:intent = new Intent(activity, CreateProjectActivity.class);
                                 startActivity(intent);
                                 break;
-                            case R.id.nav_projects_view:intent = new Intent(activity, CreateProjectActivity.class);
+                            case R.id.nav_projects_view:intent = new Intent(activity, ViewProjectsActivity.class);
                                 startActivity(intent);
                                 break;
                             case R.id.nav_user_profile:intent = new Intent(activity, MyProfile.class);
