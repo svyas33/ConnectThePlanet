@@ -39,10 +39,10 @@
                 android:src="@drawable/header" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/main_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome_message" />
+                android:text="Welcome!" />
         </LinearLayout>
 
     </RelativeLayout>

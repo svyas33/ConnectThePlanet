@@ -71,7 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="137dp"
                 android:ems="10"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,25 +80,33 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/info_burron_volunteer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="Volunteer"
+                    android:background="@color/secondaryDarkColor"
+                    android:textColor="#FFFFFF"/>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/info_button_sponsor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="Sponsor/Mentor"
+                    android:background="@color/secondaryDarkColor"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#FFFFFF"/>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/info_button_donate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:background="@color/secondaryDarkColor"
+                    android:layout_marginLeft="16dp"
+                    android:text="Donate"
+                    android:textColor="#FFFFFF"/>
             </LinearLayout>
 
             <Button
