@@ -25,36 +25,49 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="668dp"
             android:layout_below="@+id/toolbarinmain"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="7dp"
-            android:layout_marginBottom="454dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome"
+                android:textColor="@color/secondaryDarkColor"
+                android:textSize="24sp" />
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:src="@drawable/header" />
 
-            <TextView
-                android:id="@+id/main_message"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/button"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
-                android:text="Welcome!" />
+                android:background="@color/colorPrimaryDark"
+                android:text="Check out our website"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
         </LinearLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/drawer_view"
+            app:headerLayout="@layout/nav_header"/>
 
     </RelativeLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/drawer_view"
-        app:headerLayout="@layout/nav_header"/>
 
 </android.support.v4.widget.DrawerLayout>
