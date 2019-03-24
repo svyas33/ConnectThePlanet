@@ -11,20 +11,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CreateProjectActivity extends AppCompatActivity {
 
     String projName, projDetails,orgEmail;
-    int numVolunteers, costOfProject;
+    int numOfVolunteers, costOfProject;
     ImageView projImg;
     Button create;
     private FirebaseAuth mAuth;
     Uri resultUri;
+
+    Activity activity = this;
+
+    String numVolunteers, name, cost;
+    static List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +58,44 @@ public class CreateProjectActivity extends AppCompatActivity {
                 projDetails = ((EditText) findViewById(R.id.create_detailsTextView)).getText().toString();
                 orgEmail = ((EditText)findViewById(R.id.create_organizeremail)).getText().toString();
 
-                numVolunteers = Integer.parseInt(((EditText) findViewById(R.id.create_numVolunteersTextView)).getText().toString());
+                numOfVolunteers = Integer.parseInt(((EditText) findViewById(R.id.create_numVolunteersTextView)).getText().toString());
                 costOfProject = Integer.parseInt(((EditText) findViewById(R.id.create_moneyNeededTextView)).getText().toString());
 
                 Map<String, Object> projectInfo = new HashMap<>();
                 projectInfo.put("name", projName);
                 projectInfo.put("details", projDetails);
-                projectInfo.put("numVolunteers", numVolunteers);
+                projectInfo.put("numVolunteers", numOfVolunteers);
                 projectInfo.put("cost", costOfProject);
                 projectInfo.put("email", orgEmail);
                 currentProjectDb.updateChildren(projectInfo);
+
+                final DatabaseReference projectDb = FirebaseDatabase.getInstance().getReference().child("Project");
+
+                projectDb.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        for(DataSnapshot childSnapShot : dataSnapshot.getChildren()) {
+
+                            name = (String) childSnapShot.child("name").getValue();
+                            numVolunteers = (String) childSnapShot.child("numVolunteers").getValue();
+                            cost = (String) childSnapShot.child("cost").getValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError firebaseError) {
+                        System.out.println("The read failed: " + firebaseError.getMessage());
+                    }
+                });
+
+
+                Map<String, String> datum = new HashMap<String, String>(2);
+                datum.put("title", name);
+                datum.put("subtitle", (numVolunteers + " volunteers & $" + cost + " needed"));
+                data.add(datum);
+
+                activity.finish();
             }
         });
 
