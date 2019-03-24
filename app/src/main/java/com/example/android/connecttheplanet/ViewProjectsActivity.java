@@ -1,7 +1,12 @@
 package com.example.android.connecttheplanet;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -11,6 +16,7 @@ public class ViewProjectsActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     String name, numVolunteers, cost;
+    Activity activity = this;
 
 
 
@@ -30,5 +36,14 @@ public class ViewProjectsActivity extends AppCompatActivity {
                         android.R.id.text2});
 
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = CreateProjectActivity.data.get(position).get("title");
+                Intent intent = new Intent(activity, ProjectInfoActivity.class);
+                intent.putExtra("name", name);
+                startActivity(intent);
+            }
+        });
     }
 }
