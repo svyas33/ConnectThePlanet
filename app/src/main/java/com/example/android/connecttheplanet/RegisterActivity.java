@@ -99,9 +99,6 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            //Log.d(TAG, "createUserWithEmail:success");
-
                             String userId = mAuth.getCurrentUser().getUid();
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("User").child(userId);
                             Map<String, Object> userInfo = new HashMap<>();
@@ -111,14 +108,10 @@ public class RegisterActivity extends AppCompatActivity {
                             userInfo.put("company", company);
                             userInfo.put("profileImageUrl", "default");
                             currentUserDb.updateChildren(userInfo);
-                            //updateUI(user);
                             sendUserToMainActivity();
                         } else {
-                            // If sign in fails, display a message to the user.
-                            //Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
                     }
                 });

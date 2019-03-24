@@ -34,7 +34,7 @@ public class CreateProjectActivity extends AppCompatActivity {
         numVolunteers = Integer.parseInt(((EditText) findViewById(R.id.create_numVolunteersTextView)).getText().toString());
         costOfProject = Integer.parseInt(((EditText) findViewById(R.id.create_moneyNeededTextView)).getText().toString());
 
-        final DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Project");
+        final DatabaseReference currentProjectDb = FirebaseDatabase.getInstance().getReference().child("Project");
 
 
         create = (Button)findViewById(R.id.create_applyButton);
@@ -42,13 +42,13 @@ public class CreateProjectActivity extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, Object> userInfo = new HashMap<>();
-                userInfo.put("name", projName);
-                userInfo.put("details", projDetails);
-                userInfo.put("numVolunteers", numVolunteers);
-                userInfo.put("cost", costOfProject);
-                userInfo.put("email", orgEmail);
-                currentUserDb.updateChildren(userInfo);
+                Map<String, Object> projectInfo = new HashMap<>();
+                projectInfo.put("name", projName);
+                projectInfo.put("details", projDetails);
+                projectInfo.put("numVolunteers", numVolunteers);
+                projectInfo.put("cost", costOfProject);
+                projectInfo.put("email", orgEmail);
+                currentProjectDb.updateChildren(projectInfo);
             }
         });
 
