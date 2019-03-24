@@ -33,12 +33,6 @@ public class CreateProjectActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        projName = ((EditText) findViewById(R.id.create_projectNameTextView)).getText().toString();
-        projDetails = ((EditText) findViewById(R.id.create_detailsTextView)).getText().toString();
-        orgEmail = ((EditText)findViewById(R.id.create_organizeremail)).getText().toString();
-
-        numVolunteers = Integer.parseInt(((EditText) findViewById(R.id.create_numVolunteersTextView)).getText().toString());
-        costOfProject = Integer.parseInt(((EditText) findViewById(R.id.create_moneyNeededTextView)).getText().toString());
 
         projImg = findViewById(R.id.create_imageView);
 
@@ -50,6 +44,13 @@ public class CreateProjectActivity extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                projName = ((EditText) findViewById(R.id.create_projectNameTextView)).getText().toString();
+                projDetails = ((EditText) findViewById(R.id.create_detailsTextView)).getText().toString();
+                orgEmail = ((EditText)findViewById(R.id.create_organizeremail)).getText().toString();
+
+                numVolunteers = Integer.parseInt(((EditText) findViewById(R.id.create_numVolunteersTextView)).getText().toString());
+                costOfProject = Integer.parseInt(((EditText) findViewById(R.id.create_moneyNeededTextView)).getText().toString());
+
                 Map<String, Object> projectInfo = new HashMap<>();
                 projectInfo.put("name", projName);
                 projectInfo.put("details", projDetails);
