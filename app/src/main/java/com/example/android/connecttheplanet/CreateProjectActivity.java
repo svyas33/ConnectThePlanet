@@ -35,7 +35,7 @@ public class CreateProjectActivity extends AppCompatActivity {
 
     String numVolunteers, name, cost;
     static List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-
+    static Map<String,Map<String, Object>> projectList = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +69,7 @@ public class CreateProjectActivity extends AppCompatActivity {
                 projectInfo.put("cost", costOfProject);
                 projectInfo.put("email", orgEmail);
                 childrenRef.updateChildren(projectInfo);
+                projectList.put(projName,projectInfo);
 
                 currentProjectDb.addValueEventListener(new ValueEventListener() {
                     @Override
